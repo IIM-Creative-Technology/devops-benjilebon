@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meta{% endblock %}
+
+{% block body %}
+    <h1>Meta</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ metas.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ metas.Title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ metas.Description }}</td>
+            </tr>
+            <tr>
+                <th>Ogtitle</th>
+                <td>{{ metas.ogtitle }}</td>
+            </tr>
+            <tr>
+                <th>Ogurl</th>
+                <td>{{ metas.ogurl }}</td>
+            </tr>
+            <tr>
+                <th>Ogimage</th>
+                <td>{{ metas.ogimage }}</td>
+            </tr>
+            <tr>
+                <th>Ogdescription</th>
+                <td>{{ metas.ogdescription }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('meta_index') }}">back to list</a>
+
+    <a href="{{ path('meta_edit', {'id': metas.id}) }}">edit</a>
+
+{% endblock %}
