@@ -2,23 +2,30 @@
 <html>
 <head>
     {% for meta in metas %}
-    <meta charset="utf-8">
-    <meta name="copyright" content="Spacewich">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-          content="{{ meta.description }}">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="{{ meta.ogtitle }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ meta.ogurl }}">
-    <meta property="og:image" content="{{ meta.ogimage }}">
-    <meta property="og:description" content="{{ meta.ogdescription }}">
-    <title>{{ meta.title }}</title>
+        <meta charset="utf-8">
+        <meta name="copyright" content="Spacewich">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description"
+              content="{{ meta.description }}">
+        <meta name="robots" content="index, follow">
+        <meta property="og:title" content="{{ meta.ogtitle }}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ meta.ogurl }}">
+        <meta property="og:image" content="{{ meta.ogimage }}">
+        <meta property="og:description" content="{{ meta.ogdescription }}">
+        <title>{{ meta.title }}</title>
     {% endfor %}
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    {% endblock %}
 </head>
 <body>
 {% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
+
+<footer>
+    {% block javascripts %}
+        <script src="{{ asset('build/app.js') }}"></script>
+    {% endblock %}
+</footer>
 </body>
 </html>

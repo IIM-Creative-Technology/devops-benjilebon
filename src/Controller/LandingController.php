@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ArticleRepository;
 use App\Repository\MetaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,4 +27,10 @@ class LandingController extends AbstractController
             'metas' => $metaRepository->findAll(),
         ]);
     }
+    /*public function getArticles(ArticleRepository $articleRepository): Response
+    {
+        return $this->render('landing/index.html.twig', [
+            'articles' => $articleRepository->findAll(),
+        ]);
+    }*/
 }

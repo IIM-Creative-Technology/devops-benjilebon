@@ -8,7 +8,12 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-
     This friendly message is coming from: LANDING PAGE BENJi LE SANG LE PLUS DOUX AIME MOI-> <a href="{{ path('meta_index') }}">Gerer les meta</a>
+    <a href="{{ path('article_index') }}">Gerer les produits</a>
+
+    {% for article in articles %}
+        {{ article.title }}
+        {{ article.excerpt }}
+        {{ article.price }}
+    {% endfor %}
 {% endblock %}

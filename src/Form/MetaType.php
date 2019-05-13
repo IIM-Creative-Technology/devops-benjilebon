@@ -16,7 +16,7 @@ class MetaType extends AbstractType
     {
         $builder
             ->add('Title', TextType::class, [
-                'label' => '',
+                'label' => 'Titre du site',
                 'constraints' => [
                     new Length([
                         'min' => 3,
@@ -30,7 +30,7 @@ class MetaType extends AbstractType
                 ]
             ])
             ->add('Description', TextType::class, [
-                'label' => '',
+                'label' => 'Meta Description',
                 'constraints' => [
                     new Length([
                         'min' => 3,
@@ -44,7 +44,7 @@ class MetaType extends AbstractType
                 ]
             ])
             ->add('ogtitle', TextType::class, [
-                'label' => '',
+                'label' => 'Meta OpenGraph Title',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de remplir ce champs'
@@ -53,7 +53,7 @@ class MetaType extends AbstractType
                 ]
             ])
             ->add('ogurl', TextType::class, [
-                'label' => '',
+                'label' => 'Meta OpenGraph URL du site',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de remplir ce champs'
@@ -62,7 +62,7 @@ class MetaType extends AbstractType
                 ]
             ])
             ->add('ogimage', TextType::class, [
-                'label' => '',
+                'label' => 'Meta OpenGraph URL image du site',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de remplir ce champs'
@@ -71,7 +71,7 @@ class MetaType extends AbstractType
                 ]
             ])
             ->add('ogdescription', TextType::class, [
-                'label' => '',
+                'label' => 'Meta OpenGraph Description du site',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Merci de remplir ce champs'
