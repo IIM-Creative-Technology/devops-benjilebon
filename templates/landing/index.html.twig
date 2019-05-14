@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LandingController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-    This friendly message is coming from: LANDING PAGE BENJi LE SANG LE PLUS DOUX AIME MOI-> <a href="{{ path('meta_index') }}">Gerer les meta</a>
-    <a href="{{ path('article_index') }}">Gerer les produits</a>
-
-    {% for article in articles %}
-        {{ article.title }}
-        {{ article.excerpt }}
-        {{ article.price }}
-    {% endfor %}
+        <h1>Bienvenue chez Spacewich</h1>
+        <section class="main-section">
+            <h2>Produits</h2>
+            {% for article in articles %}
+                <div class="article-container">
+                    <img src="{{ article.url }}" alt="{{ article.title }}" class="product-image">
+                    <article class="landing-article">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.excerpt }}</p>
+                        <span>{{ article.price }} €</span>
+                        <a href="{{ path('product_slug', {'slug':article.slug}) }}" class="button-link">Voir plus</a>
+                    </article>
+                </div>
+            {% endfor %}
+        </section>
 {% endblock %}

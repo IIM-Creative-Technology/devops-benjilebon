@@ -1,3 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*
+{
+    font-family: 'Roboto', sans-serif;
+}
 body {
-    background-color: lightgray;
+    background-color: lightslategray;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+header
+{
+    background-color: black;
+    height: 110px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 150px;
+    box-shadow: 0 5px 10px 0;
+}
+header img
+{
+    margin-top: 80px;
+    margin-left: 20px;
+}
+nav
+{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    width: 70%;
+}
+a
+{
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+header nav a
+{
+    font-size: 25px;
+}
+header nav a:hover
+{
+    color: #352eb3;
+}
+main
+{
+    margin: auto;
+    width: 65%;
+    background-color: black;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 5px 10px 2px black;
+}
+h1
+{
+    font-size: 50px;
+}
+.main-section
+{
+    margin:auto;
+    width: 90%;
+}
+.main-section h2
+{
+    font-size: 35px;
+}
+.article-container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background-image: url("../../public/img/space.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+    border-top-right-radius: 80px;
+    box-shadow: 0 5px 10px 0;
+}
+.landing-article
+{
+    margin-left: 20px;
+}
+.landing-article h3
+{
+    margin: 0;
+    font-size: 30px;
+}
+.landing-article p
+{
+    font-size: 22px;
+}
+.landing-article span
+{
+    font-weight: bold;
+    font-size: 24px;
+}
+.product-image
+{
+    height: 220px;
+    width: 180px;
+}
+.button-link
+{
+    background-color: lightslategray;
+    padding: 8px 20px;
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px 0 black;
+}
+.button-link:active
+{
+    background-image: url("../../public/img/space.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.article-show-container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+}
+.article-show-container img
+{
+    height: 440px;
+    width: 360px;
+    margin-right: 40px;
+}
+.article-show-container article p
+{
+    font-size: 25px;
+}
+.article-show-container article span
+{
+    font-size: 35px;
+    font-weight: bold;
 }

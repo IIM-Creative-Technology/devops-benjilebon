@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ product.title }}</h1>
+    <section class="article-show-container">
+        <img src="{{ product.url }}" alt="{{ product.title }}">
+        <article>
+            <p>
+                {{ product.content }}
+            </p>
+            <span>{{ product.price }} €</span>
+            <a href="{{ path('landing') }}" class="button-link">Retour</a>
+        </article>
+    </section>
+{% endblock %}
+

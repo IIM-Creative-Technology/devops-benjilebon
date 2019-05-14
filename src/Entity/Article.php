@@ -43,8 +43,9 @@ class Article
     private $price;
 
     /**
+     * @var string
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $slug;
 

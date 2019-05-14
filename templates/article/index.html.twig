@@ -3,32 +3,29 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
+    <h1>Gestion des Produits</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Title</th>
                 <th>Excerpt</th>
                 <th>Content</th>
                 <th>Url</th>
                 <th>Price</th>
-                <th>actions</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
                 <td>{{ article.excerpt }}</td>
                 <td>{{ article.content }}</td>
                 <td>{{ article.url }}</td>
                 <td>{{ article.price }}</td>
                 <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}" class="button-link">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -39,7 +36,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('article_new') }}">Create new</a>
+    <a href="{{ path('article_new') }}" class="button-link">Créer un nouvel article</a>
 
-    <a href="{{ path('landing') }}">Retour à l'accueil</a>
+    <a href="{{ path('landing') }}" class="button-link">Retour à l'accueil</a>
 {% endblock %}

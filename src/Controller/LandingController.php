@@ -13,12 +13,14 @@ class LandingController extends AbstractController
     /**
      * @Route("/", name="landing")
      * @param MetaRepository $metaRepository
+     * @param ArticleRepository $articleRepository
      * @return Response
      */
-    public function index(MetaRepository $metaRepository) : Response
+    public function index(MetaRepository $metaRepository, ArticleRepository $articleRepository) : Response
     {
         return $this->render('landing/index.html.twig', [
             'metas' => $metaRepository->findAll(),
+            'articles' => $articleRepository->findAll(),
         ]);
     }
     public function getMeta(MetaRepository $metaRepository): Response
@@ -27,10 +29,16 @@ class LandingController extends AbstractController
             'metas' => $metaRepository->findAll(),
         ]);
     }
-    /*public function getArticles(ArticleRepository $articleRepository): Response
+    /**
+     * @Route("/products/{slug}", name="product_slug")
+     */
+    public function showProduct(ArticleRepository $articleRepository,MetaRepository $metaRepository, $slug)
     {
-        return $this->render('landing/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
+        $product = $articleRepository->findOneBy(array('slug' => $slug));
+
+        return $this->render('article/slugshow.html.twig', [
+            'product' => $product,
+            'metas' => $metaRepository->findAll(),
         ]);
-    }*/
+    }
 }

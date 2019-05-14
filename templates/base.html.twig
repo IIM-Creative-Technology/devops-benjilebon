@@ -20,8 +20,18 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+<header>
+    <img src="{{ asset('img/logotypo.png') }}" alt="Spacewich Logo">
+    <nav>
+        <a href="{{ path('landing') }}">Accueil</a>
+        <a href="{{ path('meta_index') }}">Gérer les meta</a>
+        <a href="{{ path('article_index') }}">Gérer les produits</a>
 
+    </nav>
+</header>
+<main>
+    {% block body %}{% endblock %}
+</main>
 <footer>
     {% block javascripts %}
         <script src="{{ asset('build/app.js') }}"></script>
