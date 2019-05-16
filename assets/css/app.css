@@ -31,9 +31,11 @@ body {
     padding: 0;
     margin: 0;
     width: 100%;
-    background-image: url("../../public/img/space.png");
+    background-image: url("../../public/img/space.jpg");
     background-position: center;
-    background-size: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 ul {
@@ -243,7 +245,7 @@ h1
 
 .button-link:active
 {
-    background-image: url("../../public/img/space.png");
+    background-image: url("../../public/img/space.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
