@@ -21,7 +21,7 @@ class MetaType extends AbstractType
                     new Length([
                         'min' => 3,
                         'max' => 65,
-                        'maxMessage' => 'Le titre est trop pour être correctement référencé'
+                        'maxMessage' => 'Le titre ne doit pas exceder les 65 caractères pour être correctement référencé'
                     ]),
                     new NotBlank([
                         'message' => 'Merci de remplir ce champs'
