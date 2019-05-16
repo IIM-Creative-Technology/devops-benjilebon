@@ -2,14 +2,17 @@
 
 {% block body %}
     <h1>{{ product.title }}</h1>
-    <section class="article-show-container">
-        <img src="{{ product.url }}" alt="{{ product.title }}">
-        <article>
+    <section class="article-container">
+        <img src="{{ product.url }}" alt="{{ product.title }}" class="product-image">
+        <article class="landing-article product-desc">
             <p>
                 {{ product.content }}
             </p>
-            <span>{{ product.price }} €</span>
-            <a href="{{ path('landing') }}" class="button-link">Retour</a>
+            <div class="row article-command product-command">
+                <span>{{ product.price }} €</span>
+                <a href="{{ path('landing') }}" class="button-link">Retour</a>                
+            </div>
+
         </article>
     </section>
 {% endblock %}
