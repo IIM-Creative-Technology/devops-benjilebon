@@ -162,6 +162,7 @@ h1
     font-family: 'night_machineregular';
     font-size: 50px;
     text-align: center;
+    margin-top: 5vh;
 }
 
 .main-section
@@ -184,6 +185,7 @@ h1
     margin-bottom: 20px;
     background-color: lightslategray;
     border-radius: 10px;
+    margin-top: 5.7vh;
 }
 
 .landing-article {
@@ -226,7 +228,7 @@ h1
 {
     margin-top: 5vh;
     height: 250px;
-    width: 180px;
+    width: 30vw;
 }
 
 .button-link
@@ -309,6 +311,10 @@ h1
         width: 100%;
     }
 
+    .product-image {
+        width: 70vw;
+    }
+
     .nav-cat>ul div li {
         font-size: 1.4em;
     }
@@ -321,6 +327,10 @@ h1
 
     .container-landing {
         width: 75%;
+    }
+
+    .product-image {
+
     }
 
     header {
@@ -351,7 +361,7 @@ h1
     .landing-article p {
         margin-top: 0vh;
         text-align: left;
-        font-size: 16px;
+        font-size: 26px;
     }
 
     .article-command {
@@ -365,7 +375,6 @@ h1
     .product-image {
         margin: 2vh 2vw;
         height: 30vh;
-        width: auto;
     }
 }
 
