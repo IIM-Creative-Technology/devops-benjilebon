@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <h1>Bienvenue chez Spacewich</h1>
-        <section class="main-section">
-            <h2>Produits</h2>
-            {% for article in articles %}
-                <div class="article-container">
-                    <img src="{{ article.url }}" alt="{{ article.title }}" class="product-image">
-                    <article class="landing-article">
-                        <h3>{{ article.title }}</h3>
-                        <p>{{ article.excerpt }}</p>
+<div class="container-landing">
+        <h1>Spacewich</h1>
+    <section class="main-section">
+        {% for article in articles %}
+            <div class="article-container">
+                <img src="{{ article.url }}" alt="{{ article.title }}" class="product-image">
+                <article class="landing-article">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.excerpt }}</p>
+                    <div class="row article-command">
                         <span>{{ article.price }} €</span>
-                        <a href="{{ path('product_slug', {'slug':article.slug}) }}" class="button-link">Voir plus</a>
-                    </article>
-                </div>
-            {% endfor %}
-        </section>
+                        <a href="{{ path('product_slug', {'slug':article.slug}) }}" class="button-link">Voir plus</a>    
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </section>  
+</div>
+
 {% endblock %}

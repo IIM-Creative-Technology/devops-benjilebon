@@ -3,10 +3,14 @@
 {% block title %}Edit Meta{% endblock %}
 
 {% block body %}
+
+<div class="container-metaedit">
     <h1>Modifier les Meta</h1>
 
     {{ include('meta/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('meta_index') }}" class="button-link">Retour à l'administration</a>
+    <a href="{{ path('meta_index') }}" class="button-link">Retour à l'administration</a>    
+</div>
+
 
 {% endblock %}

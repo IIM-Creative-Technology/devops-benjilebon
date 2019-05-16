@@ -9,6 +9,21 @@
 require('../css/app.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
+const $ = require('jquery');
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+$(document).ready(function(){
+
+toggled = false;
+
+$('.nav-toggle').click(function(){
+
+    toggled ^= true;
+    toggled ?
+      $('.nav-cat').css('height', $('.nav-cat ul').height())
+    :
+      $('.nav-cat').removeAttr('style')
+})
+
+salope = "bonjour"
+
+})

@@ -38,7 +38,7 @@ class MetaController extends AbstractController
     /**
      * @Route("/{id}/edit", name="meta_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Meta $metum): Response
+    public function edit(Request $request, Meta $metum, MetaRepository $metaRepository): Response
     {
         $form = $this->createForm(MetaType::class, $metum);
         $form->handleRequest($request);
@@ -52,7 +52,8 @@ class MetaController extends AbstractController
         }
 
         return $this->render('meta/edit.html.twig', [
-            'metas' => $metum,
+            'metas' => $metaRepository->findAll(),
+            'metos' => $metum,
             'form' => $form->createView(),
         ]);
     }

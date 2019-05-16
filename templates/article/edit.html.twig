@@ -3,11 +3,16 @@
 {% block title %}Edit Article{% endblock %}
 
 {% block body %}
-    <h1>Modifier le produit</h1>
+<h1>Modifier le produit</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="container-metaedit">
+        
 
-    <a href="{{ path('article_index') }}" class="button-link">Retour à l'administration</a>
+        {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('article/_delete_form.html.twig') }}
+        <a href="{{ path('article_index') }}" class="button-link">Retour à l'administration</a>
+
+        {{ include('article/_delete_form.html.twig') }}    
+</div>
+
 {% endblock %}

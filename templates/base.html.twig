@@ -17,24 +17,33 @@
     {% endfor %}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     {% endblock %}
 </head>
 <body>
-<header>
-    <img src="{{ asset('img/logotypo.png') }}" alt="Spacewich Logo">
-    <nav>
-        <a href="{{ path('landing') }}">Accueil</a>
-        <a href="{{ path('meta_index') }}">Gérer les meta</a>
-        <a href="{{ path('article_index') }}">Gérer les produits</a>
-
-    </nav>
-</header>
+    <header>
+        <nav>
+            <img class="brandlogo" src="{{ asset('/img/logotypo.png') }}" alt="">
+            <button class="nav-toggle">
+                <i class="fas fa-2x fa-bars"></i>
+            </button>
+            <div class="nav-cat">
+                <ul>
+                    <span id="separator"></span> 
+                    <div class="professional"><li><a href="{{ path('landing') }}">Accueil</a></li></div>
+                    <div class="educational"><li><a href="{{ path('meta_index') }}">Gérer les métas</a></li></div>    
+                    <div class="personal"><li><a href="{{ path('article_index') }}">Gérer les articles</a></li></div>
+                </ul>
+            </div>
+        </nav>
+    </header>
 <main>
     {% block body %}{% endblock %}
 </main>
 <footer>
     {% block javascripts %}
-        <script src="{{ asset('build/app.js') }}"></script>
+        {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </footer>
 </body>
