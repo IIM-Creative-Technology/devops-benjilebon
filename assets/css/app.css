@@ -139,9 +139,13 @@ main
 {
     margin: auto;
     margin-top: 100px;
-    width: 96%;
     padding: 20px;
     color: white;
+}
+
+.container-landing {
+    width: 96%;
+    margin: auto;
 }
 
 footer
@@ -315,7 +319,7 @@ h1
         font-size: 64px;
     }
 
-    main {
+    .container-landing {
         width: 75%;
     }
 
@@ -376,4 +380,67 @@ h1
 
 .product-command {
     justify-content: space-between;
+}
+
+/* META INDEX */
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+/* META EDIT */
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form div label {
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .container-metaedit {
+        width: 90%;
+        margin:auto;
+    }
+}
+@media (min-width: 992px) {
+  .container-metaedit {
+    width: 50%;
+    margin: auto;
+  }  
+}
+
+
+.container-metaedit .button-link {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    margin-top: 1vh;
+    text-align: center;
+}
+
+.form-submit-btn {
+    background-color: #000;
+    color: white;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    padding: 8px 35px;
+    /* margin-left: 15px; */
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 1vh;
 }

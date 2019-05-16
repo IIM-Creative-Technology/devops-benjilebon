@@ -3,39 +3,42 @@
 {% block title %}Meta index{% endblock %}
 
 {% block body %}
-    <h1>Gestion des balises metas</h1>
+<div class="meta">
+        <h1>Gestion des balises metas</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Meta Titre</th>
-                <th>Meta Description</th>
-                <th>Meta OG:Title</th>
-                <th>Meta OG:URL</th>
-                <th>Meta OG:Image</th>
-                <th>Meta OG:Description</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for metum in metas %}
-            <tr>
-                <td>{{ metum.Title }}</td>
-                <td>{{ metum.Description }}</td>
-                <td>{{ metum.ogtitle }}</td>
-                <td>{{ metum.ogurl }}</td>
-                <td>{{ metum.ogimage }}</td>
-                <td>{{ metum.ogdescription }}</td>
-                <td>
-                    <a href="{{ path('meta_edit', {'id': metum.id}) }}" class="button-link">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Meta Titre</th>
+                    <th>Meta Description</th>
+                    <th>Meta OG:Title</th>
+                    <th>Meta OG:URL</th>
+                    <th>Meta OG:Image</th>
+                    <th>Meta OG:Description</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for metum in metas %}
+                <tr>
+                    <td>{{ metum.Title }}</td>
+                    <td>{{ metum.Description }}</td>
+                    <td>{{ metum.ogtitle }}</td>
+                    <td>{{ metum.ogurl }}</td>
+                    <td>{{ metum.ogimage }}</td>
+                    <td>{{ metum.ogdescription }}</td>
+                    <td>
+                        <a href="{{ path('meta_edit', {'id': metum.id}) }}" class="button-link">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>    
+</div>
+
 
     <a href="{{ path('landing') }}" class="button-link">Retour à l'accueil</a>
 {% endblock %}
