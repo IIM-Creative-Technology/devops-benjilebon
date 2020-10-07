@@ -6,8 +6,8 @@ jobs:
   install-composer:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Validation du composer.json et du composer.lock
+      uses: actions/checkout@v2
       run: composer validate
 
     - name: Caching Composer packages
@@ -32,12 +32,12 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest
       
       - name: Installation des dépendances yarn
-      - uses: borales/actions-yarn@v2.0.0
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: encore dev # yarn encore dev
   db-seeding:
     runs-on: ubuntu-latest
     steps:
         - name: Seeding de la database
-        - uses: mirromutth/mysql-action@v1.1
+          uses: mirromutth/mysql-action@v1.1
           run: "php bin/console doctrine:schema:update --force" 
