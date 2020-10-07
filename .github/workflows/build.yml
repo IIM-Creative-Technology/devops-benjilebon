@@ -9,30 +9,31 @@ jobs:
     - uses: actions/checkout@v2
     - name: Validation du composer.json et du composer.lock
       run: composer validate
-  install-yarn:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install # yarn install
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Installation des dépendances composer
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
+
+  # install-yarn:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: borales/actions-yarn@v2.0.0
+  #       with:
+  #         cmd: install # yarn install
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Installation des dépendances composer
+  #       if: steps.composer-cache.outputs.cache-hit != 'true'
+  #       run: composer install --prefer-dist --no-progress --no-suggest
       
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: encore dev # yarn encore dev
-  db-seeding:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Shutdown Default Ubuntu MySQL
-          run: sudo service mysql stop
+  #     - uses: borales/actions-yarn@v2.0.0
+  #       with:
+  #         cmd: encore dev # yarn encore dev
+  # db-seeding:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #       - name: Shutdown Default Ubuntu MySQL
+  #         run: sudo service mysql stop
         
-        - name: "Setup MySQL"
-          uses: mirromutth/mysql-action@v1.1
+  #       - name: "Setup MySQL"
+  #         uses: mirromutth/mysql-action@v1.1
         
-        - name: "Seed Database"
-          run: "php bin/console doctrine:schema:update --force" 
+  #       - name: "Seed Database"
+  #         run: "php bin/console doctrine:schema:update --force" 
