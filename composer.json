@@ -1,4 +1,6 @@
 {
+    "name": "spacewich/seo",
+    "description": "Site e-commerce test",
     "type": "project",
     "license": "proprietary",
     "require": {

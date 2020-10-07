@@ -1,0 +1,43 @@
+name: PHP Composer
+
+on: pull_request
+
+jobs:
+  install-composer:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Validation du composer.json et du composer.lock
+      run: composer validate
+
+    - name: Caching Composer packages
+      id: composer-cache
+      uses: actions/cache@v2
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+  install-yarn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # yarn install
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installation des dépendances composer
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+      
+      - name: Installation des dépendances yarn
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: encore dev # yarn encore dev
+  db-seeding:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Seeding de la database
+        - uses: mirromutth/mysql-action@v1.1
+          run: "php bin/console doctrine:schema:update --force" 
