@@ -6,13 +6,13 @@ jobs:
   install-composer:
     runs-on: ubuntu-latest
     steps:
-    - name: Validation du composer.json et du composer.lock
     - uses: actions/checkout@v2
+    - name: Validation du composer.json et du composer.lock
       run: composer validate
 
     - name: Caching Composer packages
       id: composer-cache
-      uses: actions/cache@v2
+    - uses: actions/cache@v2
       with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
