@@ -3,14 +3,32 @@ name: PHP Composer
 on: pull_request
 
 jobs:
-  validate-php:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     # linter
     - uses: michaelw90/PHP-Lint@master
+  security-checker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     # security-checker
     - uses: symfonycorp/security-checker-action@v2
+  phpcpd:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    #php copy paste detector
+    - name: PHP Duplicated Code Detector
+      uses: StephaneBour/actions-php-cpd@1.0
+      with:
+        dir: './src'
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PHPUnit (php-actions)
+      uses: php-actions/phpunit@v9
   validate-composer:
     runs-on: ubuntu-latest
     steps:
