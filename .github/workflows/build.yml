@@ -16,16 +16,15 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # yarn install
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Installation des dépendances composer
-  #       if: steps.composer-cache.outputs.cache-hit != 'true'
-  #       run: composer install --prefer-dist --no-progress --no-suggest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Installation des dépendances composer
+        run: composer install --prefer-dist --no-progress --no-suggest
       
-  #     - uses: borales/actions-yarn@v2.0.0
-  #       with:
-  #         cmd: encore dev # yarn encore dev
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: encore dev # yarn encore dev
   # db-seeding:
   #   runs-on: ubuntu-latest
   #   steps:
