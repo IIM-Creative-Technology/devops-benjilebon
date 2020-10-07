@@ -35,6 +35,9 @@ jobs:
         
         - name: "Setup MySQL"
           uses: mirromutth/mysql-action@v1.1
+          with:
+            mysql user: 'spacewich' 
+            mysql password: 'spacewich'
         
         - name: "Seed Database"
           run: "php bin/console doctrine:schema:update --force" 
