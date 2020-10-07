@@ -27,8 +27,12 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
     steps:
-    - name: PHPUnit (php-actions)
-      uses: php-actions/phpunit@v9
+      - name: CP .env.ci
+        run: cp .env.ci .env.local
+      - name: Installation des dépendances composer
+        run: composer install --prefer-dist --no-progress --no-suggest
+      - name: PHPUnit (php-actions)
+        uses: php-actions/phpunit@v9
   validate-composer:
     runs-on: ubuntu-latest
     steps:
