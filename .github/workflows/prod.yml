@@ -1,0 +1,80 @@
+name: PHP Composer
+
+on:
+  push:
+    branches:
+        - prod
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # linter
+    - uses: michaelw90/PHP-Lint@master
+  security-checker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # security-checker
+    - uses: symfonycorp/security-checker-action@v2
+  phpcpd:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    #php copy paste detector
+    - name: PHP Duplicated Code Detector
+      uses: StephaneBour/actions-php-cpd@1.0
+      with:
+        dir: './src'
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: CP .env.ci
+        run: cp .env.ci .env.local
+      - name: PHPUnit (php-actions)
+        run: php bin/phpunit
+  validate-composer:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Validation du composer.json et du composer.lock
+      run: composer validate
+    - name: PHP Version
+      run: php -v
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nanasess/setup-php@master
+        with:
+          php-version: '7.3'
+
+      - name: CP .env.ci
+        run: cp .env.ci .env.local
+      - name: Installation des dépendances composer
+        run: composer install --prefer-dist --no-progress --no-suggest
+      
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # yarn install
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: encore dev # yarn encore dev
+      - name: Deploy Static Files to Production server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AZURE_PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "."
+          REMOTE_HOST: ${{ secrets.AZURE_HOST }}
+          REMOTE_USER: ${{ secrets.AZURE_PROD_USER }}
+          TARGET: ${{ secrets.AZURE_PROD_TARGET }}
+      - name: Copy Private key to File to issue ssh commands
+        run: echo ${{ secrets.AZURE_PRIVATE_KEY }} > id_rsa
+      - name: Copy .env.prod to .env.local 
+        run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "cp ${{ secrets.AZURE_PROD_TARGET }}.env.prod ${{ secrets.AZURE_PROD_TARGET }}.env.local"
+      - name: Deploy Servers 
+        run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PROD_TARGET }}docker-compose.prod.yml up -d"
+
