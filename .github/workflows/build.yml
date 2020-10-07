@@ -3,6 +3,14 @@ name: PHP Composer
 on: pull_request
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # linter
+    - uses: michaelw90/PHP-Lint@master
+    # security-checker
+    - uses: symfonycorp/security-checker-action@v2
   install-composer:
     runs-on: ubuntu-latest
     steps:
