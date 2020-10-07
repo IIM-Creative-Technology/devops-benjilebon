@@ -19,6 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Installation des dépendances composer
         run: composer install --prefer-dist --no-progress --no-suggest
       
@@ -28,6 +29,7 @@ jobs:
   db-seeding:
     runs-on: ubuntu-latest
     steps:
+        - uses: actions/checkout@v2
         - name: Shutdown Default Ubuntu MySQL
           run: sudo service mysql stop
         
