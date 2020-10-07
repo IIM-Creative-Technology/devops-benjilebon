@@ -10,12 +10,12 @@ jobs:
     - name: Validation du composer.json et du composer.lock
       run: composer validate
 
-  # install-yarn:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: borales/actions-yarn@v2.0.0
-  #       with:
-  #         cmd: install # yarn install
+  install-yarn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # yarn install
   # build:
   #   runs-on: ubuntu-latest
   #   steps:
