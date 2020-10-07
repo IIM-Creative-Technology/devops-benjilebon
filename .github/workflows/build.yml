@@ -31,15 +31,4 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: encore dev # yarn encore dev
-      - name: Shutdown Default Ubuntu MySQL
-        run: sudo service mysql stop
-      
-      - name: "Setup MySQL"
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql user: 'spacewich' 
-          mysql password: 'spacewich'
-      
-      - name: "Seed Database"
-        run: "php bin/console doctrine:schema:update --force" 
 
