@@ -1,4 +1,6 @@
 {
+    "name": "spacewich/seo",
+    "description": "Site e-commerce test",
     "type": "project",
     "license": "proprietary",
     "require": {
@@ -69,7 +71,10 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.1",
+        "symfony/browser-kit": "4.2.*",
+        "symfony/css-selector": "4.2.*",
         "symfony/debug-pack": "^1.0",
+        "symfony/phpunit-bridge": "^5.1",
         "symfony/profiler-pack": "^1.0",
         "symfony/web-server-bundle": "4.2.*"
     }
