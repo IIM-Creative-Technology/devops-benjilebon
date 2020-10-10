@@ -41,7 +41,7 @@ Permet de démarrer les serveurs à travers Docker (UNIQUEMENT PREPROD/PROD)
 
 ### Architecture
 
-![Archi Image](https://ibb.co/Gs4BzXj)
+![Archi Image](https://i.ibb.co/3f9GgwH/Capture.png)
 
 
 # Liens des environnements
