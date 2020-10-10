@@ -72,11 +72,11 @@ jobs:
           REMOTE_USER: ${{ secrets.AZURE_PROD_USER }}
           TARGET: ${{ secrets.AZURE_PROD_TARGET }}
       - name: Copy Private key to File to issue ssh commands
-        run: echo ${{ secrets.AZURE_PRIVATE_KEY }} > id_rsa
+        run: echo "${{ secrets.AZURE_PRIVATE_KEY }}" > id_rsa
       - name: Copy .env.prod to .env.local 
         run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "cp ${{ secrets.AZURE_PROD_TARGET }}.env.prod ${{ secrets.AZURE_PROD_TARGET }}.env.local"
-      - name: Update doctrine Schema 
-        run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "${{ secrets.AZURE_PREPROD_TARGET }}runc php bin/console doctrine:schema:update"
       - name: Deploy Servers 
         run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PROD_TARGET }}docker-compose.prod.yml up -d"
+      - name: Update doctrine Schema 
+        run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "${{ secrets.AZURE_PREPROD_TARGET }}runc php bin/console doctrine:schema:update"
 
