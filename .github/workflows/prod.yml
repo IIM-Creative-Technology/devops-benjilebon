@@ -80,5 +80,5 @@ jobs:
       - name: Update doctrine Schema 
         run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PROD_TARGET }}docker-compose.prod.yml exec -T php-devops php bin/console doctrine:schema:update --force"
       - name: Fix permissions 
-        run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "chmod 777 -R ${{ secrets.AZURE_PROD_TARGET }}var && chmod +x -R ${{ secrets.AZURE_PROD_TARGET }}"
+        run: ssh -i id_rsa ${{ secrets.AZURE_PROD_USER }}@${{ secrets.AZURE_HOST }} "rm -rf ${{ secrets.AZURE_PROD_TARGET }}var/* && chmod 777 -R ${{ secrets.AZURE_PROD_TARGET }}var && chmod +x -R ${{ secrets.AZURE_PROD_TARGET }}"
 
