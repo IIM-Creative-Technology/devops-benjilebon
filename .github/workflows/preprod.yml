@@ -78,7 +78,7 @@ jobs:
       - name: Deploy Servers 
         run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PREPROD_TARGET }}docker-compose.preprod.yml up -d"
       - name: Update doctrine Schema 
-        run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PREPROD_TARGET }}docker-compose.preprod.yml exec php-devops 'php bin/console doctrine:schema:update'"
+        run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "docker-compose -f ${{ secrets.AZURE_PREPROD_TARGET }}docker-compose.preprod.yml exec -T php-devops php bin/console doctrine:schema:update"
       - name: Fix permissions 
         run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "chmod 777 -R ${{ secrets.AZURE_PREPROD_TARGET }}var && chmod +x -R ${{ secrets.AZURE_PREPROD_TARGET }}"
 
