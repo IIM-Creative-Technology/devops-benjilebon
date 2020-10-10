@@ -72,7 +72,7 @@ jobs:
           REMOTE_USER: ${{ secrets.AZURE_PREPROD_USER }}
           TARGET: ${{ secrets.AZURE_PREPROD_TARGET }}
       - name: Copy Private key to File to issue ssh commands
-        run: echo ${{ secrets.AZURE_PRIVATE_KEY }} > id_rsa
+        run: echo ${{ secrets.AZURE_PRIVATE_KEY }} > id_rsa && chmod 600 id_rsa
       - name: Copy .env.preprod to .env.local 
         run: ssh -i id_rsa ${{ secrets.AZURE_PREPROD_USER }}@${{ secrets.AZURE_HOST }} "cp ${{ secrets.AZURE_PREPROD_TARGET }}.env.preprod ${{ secrets.AZURE_PREPROD_TARGET }}.env.local"
       - name: Update doctrine Schema 
