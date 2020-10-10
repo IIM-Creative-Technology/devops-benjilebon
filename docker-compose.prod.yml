@@ -1,6 +1,6 @@
 version: '3'
 services:
-  php-fpm:
+  php-devops:
     image: php-devops
     build:
       context: ./
@@ -10,6 +10,8 @@ services:
       - ./:/var/www/html
     environment:
       PHP_IDE_CONFIG: serverName=inpi-devops-docker
+    networks: 
+      - devops
       
   nginx:
     image: nginx:alpine
@@ -19,6 +21,8 @@ services:
       - ./docker/symfony_vhost.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - 9010:80
+    networks: 
+      - devops      
 
   db:
     image: mysql:5.7
@@ -33,6 +37,10 @@ services:
     ports:
       - 3306
     command: "mysqld --character-set-server=utf8mb4 --max_allowed_packet=32M"
-
+    networks: 
+      - devops
 volumes:
   mysql_data:
+
+networks:
+  devops:
