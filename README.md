@@ -48,3 +48,4 @@ Permet de démarrer les serveurs à travers Docker (UNIQUEMENT PREPROD/PROD)
 
 [iim-preprod.spacewich.fr](iim-preprod.spacewich.fr)
 [iim-prod.spacewich.fr](iim-prod.spacewich.fr)
+(La machine est éteinte entre 1h et 8h du matin /!\ )
